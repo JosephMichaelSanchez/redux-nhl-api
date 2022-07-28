@@ -1,7 +1,8 @@
 import React from 'react';
 
-function TeamItem() {
+function TeamItem({team}) {
     <>
+    <li>Team ID: {team.id} Team Name: {team.name}</li>
     </>
 }
 
