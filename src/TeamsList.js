@@ -4,6 +4,7 @@ import axios from 'axios';
 
 function TeamsList() {
 
+    const dispatch = useDispatch();
     const [teamList, setTeamList] = useState([]);
 
     const getTeams = () => {
@@ -11,6 +12,9 @@ function TeamsList() {
             // the data portion of the response will be the new value of the tealList array
             setTeamList(res.data.teams);
         });
+
+        console.log(teamList);
+        
     }
 
     return (
