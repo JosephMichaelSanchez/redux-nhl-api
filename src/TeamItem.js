@@ -18,7 +18,7 @@ function TeamItem({ team }) {
     const getStats = () => {
         console.log('get stats clicked');
         axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${team.id}?expand=team.stats`).then(res => {
-            console.log(res.data.teams[0].teamStats);
+            console.log(res.data.teams[0].teamStats[0].splits[0].stat);
 
         })
         setStats();
