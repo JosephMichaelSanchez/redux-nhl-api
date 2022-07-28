@@ -34,9 +34,14 @@ function TeamsList() {
             <h3>TeamsList goes here:</h3>
             <button onClick={setTeams}>Show NHL Teams</button>
             {/* loop through the teamList array if it has at least one object inside it */}
-            {nhlTeams.length >= 1 ? nhlTeams.map((team, i) => {
-                return <p key={i}>Team ID: {team.id} - Team Name: {team.name} </p>
-            }) : ''}
+            {nhlTeams.map(team => {
+                return (
+                    <TeamItem
+                    key={team.id}
+                    team={team}
+                    />
+                )
+            })}
         </>
     )
 }
