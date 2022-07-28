@@ -18,9 +18,20 @@ const teamsReducer = (state = [], action) => {
       return state;
   }
 }
+
+const statsReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_STATS':
+      return action.payload;
+    
+      default:
+        return state;
+  }
+}
 const store = createStore(
   combineReducers({
     teamsReducer: teamsReducer,
+    statsReducer: statsReducer
   }),
   applyMiddleware(logger)
 
