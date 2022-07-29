@@ -27,6 +27,11 @@ function TeamItem({ team }) {
         [team.id, team.name, team.venue.name, gamesPlayed, teamWins, teamLosses, teamPoints, teamGoalsPerGame, gameDate, firstOpponent]
     ];
 
+    // function to hide download link after being clicked
+    const hideLink = () => {
+        setShowLink(!showLink);
+    }
+
     // function to get all of the necessary data for the CSV file
     const getStats = async () => {
 
@@ -94,7 +99,7 @@ function TeamItem({ team }) {
         {/* button to call getStats function */}
         <button onClick={getStats}>Get Team Stats</button>
         {/* conditional render to show link to download CSV if stats were retrieved */}
-        { showLink ? <CSVLink data={data} filename={`${team.name} Stats`} target="_blank">Download Stats CSV</CSVLink> : ''}</p>
+        { showLink ? <CSVLink onClick={hideLink} data={data} filename={`${team.name} Stats`} target="_blank">Download Stats CSV</CSVLink> : ''}</p>
     </>
     )
 }

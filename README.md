@@ -37,7 +37,6 @@ After the button is clicked, a 'Download Stats CSV' link will appear next to it.
 
 [![Screen-Shot-2022-07-29-at-2-18-25-PM.png](https://i.postimg.cc/C5PDh44S/Screen-Shot-2022-07-29-at-2-18-25-PM.png)](https://postimg.cc/m19hVCq5)
 
-Note: You must click the 'Get Team Stats' button for the team you wish to download a CSV for immediately prior to clicking their download link. 
 
 ## Built With
 * React
