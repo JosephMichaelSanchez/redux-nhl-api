@@ -15,6 +15,7 @@ function TeamItem({ team }) {
     const teamGoalsPerGame = useSelector(store => store.statsReducer.goalsPerGame)
     const gameDate = useSelector(store => store.dateReducer);
     const firstOpponent = useSelector(store => store.opponentReducer);
+    const [showLink, setShowLink] = useState(false);
 
     const data = [
         ['Team ID', 'Team Name', 'Team Venue Name', 'Games Played', 'Wins', 'Losses', 'Points', 'Goals Per Game', 'Date of 1st Game', '1st Game Opponent'],
@@ -74,9 +75,11 @@ function TeamItem({ team }) {
             console.log(err);
             
         }
+
+        setShowLink(!showLink)
     }
     return (<>
-        <p>Team ID: {team.id} Team Name: {team.name} <button onClick={getStats}>Get Team Stats</button><CSVLink data={data} filename={`${team.name} Stats`} target="_blank">Download Stats CSV</CSVLink></p>
+        <p>Team ID: {team.id} Team Name: {team.name} <button onClick={getStats}>Get Team Stats</button>{ showLink ? <CSVLink data={data} filename={`${team.name} Stats`} target="_blank">Download Stats CSV</CSVLink> : ''}</p>
     </>
     )
 }
