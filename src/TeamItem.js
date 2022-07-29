@@ -56,6 +56,17 @@ function TeamItem({ team }) {
                     type: 'SET_OPPONENT',
                     payload: r.data.teams[0].nextGameSchedule.dates[0].games[0].teams.away.team.name
                 })
+            } else {
+                try {
+                    const resp = await axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${team.id}?expand=team.schedule.next`)
+                    dispatch ({
+                        type: 'SET_OPPONENT',
+                        payload: resp.data.teams[0].nextGameSchedule.dates[0].games[0].teams.home.team.name
+                    })
+                } catch (err) {
+                    console.log(err);
+                    
+                }
             }
         } catch (err) {
             console.log(err);
