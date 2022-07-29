@@ -24,7 +24,6 @@ function TeamItem({ team }) {
 
         try {
             const res = await axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${team.id}?expand=team.stats`);
-            console.log(res.data.teams[0].teamStats[0]);
             
             dispatch ({
                 type: 'SET_STATS',
@@ -47,6 +46,21 @@ function TeamItem({ team }) {
             console.log(err);
         }
         
+        try {
+            const r = await axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${team.id}?expand=team.schedule.next`)
+            console.log(r.data.teams[0].nextGameSchedule.dates[0].games[0].teams.away.team.name)
+
+            if (r.data.teams[0].nextGameSchedule.dates[0].games[0].teams.away.team.name != team.name) {
+
+                dispatch ({
+                    type: 'SET_OPPONENT',
+                    payload: r.data.teams[0].nextGameSchedule.dates[0].games[0].teams.away.team.name
+                })
+            }
+        } catch (err) {
+            console.log(err);
+            
+        }
     }
     return (<>
         <p>Team ID: {team.id} Team Name: {team.name} <button onClick={getStats}>Get Team Stats</button><button onClick={logState}>Download CSV</button></p>
