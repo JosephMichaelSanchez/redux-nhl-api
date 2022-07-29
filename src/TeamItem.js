@@ -11,11 +11,12 @@ function TeamItem({ team }) {
     const teamLosses = useSelector(store => store.statsReducer.losses);
     const teamPoints = useSelector(store => store.statsReducer.pts)
     const teamGoalsPerGame = useSelector(store => store.statsReducer.goalsPerGame)
-    const gameDate = useSelector(store => store.dateReducer)
+    const gameDate = useSelector(store => store.dateReducer);
+    const firstOpponent = useSelector(store => store.opponentReducer);
 
     const logState = () => {
-        
-            console.log(team.id, team.name, gamesPlayed, teamWins, teamLosses, teamPoints, teamGoalsPerGame, gameDate);
+            
+            console.log(team.id, team.name, team.venue.name, gamesPlayed, teamWins, teamLosses, teamPoints, teamGoalsPerGame, gameDate, firstOpponent);
             
     }
 
