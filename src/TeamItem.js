@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { CSVLink, CSVDownload } from "react-csv";
+
 
 
 function TeamItem({ team }) {
@@ -14,11 +16,10 @@ function TeamItem({ team }) {
     const gameDate = useSelector(store => store.dateReducer);
     const firstOpponent = useSelector(store => store.opponentReducer);
 
-    const logState = () => {
-            
-            console.log(team.id, team.name, team.venue.name, gamesPlayed, teamWins, teamLosses, teamPoints, teamGoalsPerGame, gameDate, firstOpponent);
-            
-    }
+    const data = [
+        ['Team ID', 'Team Name', 'Team Venue Name', 'Games Played', 'Wins', 'Losses', 'Points', 'Goals Per Game', 'Date of 1st Game', '1st Game Opponent'],
+        [team.id, team.name, team.venue.name, gamesPlayed, teamWins, teamLosses, teamPoints, teamGoalsPerGame, gameDate, firstOpponent]
+    ];
 
 
     const getStats = async () => {
@@ -75,7 +76,7 @@ function TeamItem({ team }) {
         }
     }
     return (<>
-        <p>Team ID: {team.id} Team Name: {team.name} <button onClick={getStats}>Get Team Stats</button><button onClick={logState}>Download CSV</button></p>
+        <p>Team ID: {team.id} Team Name: {team.name} <button onClick={getStats}>Get Team Stats</button><CSVLink data={data} filename={`${team.name} Stats`} target="_blank">Download Stats CSV</CSVLink></p>
     </>
     )
 }
