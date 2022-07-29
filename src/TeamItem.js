@@ -6,13 +6,15 @@ import axios from 'axios';
 function TeamItem({ team }) {
 
     const dispatch = useDispatch();
-    const [teamStats, setTeamStats] = useState({});
     const gamesPlayed = useSelector(store => store.statsReducer.gamesPlayed)
-    
+    const teamWins = useSelector(store => store.statsReducer.wins);
+    const teamLosses = useSelector(store => store.statsReducer.losses);
+    const teamPoints = useSelector(store => store.statsReducer.pts)
+    const teamGoalsPerGame = useSelector(store => store.statsReducer.goalsPerGame)
 
     const logState = () => {
         
-            console.log(gamesPlayed);
+            console.log(team.id, team.name, gamesPlayed, teamWins, teamLosses, teamPoints, teamGoalsPerGame);
             
     }
 
