@@ -19,7 +19,7 @@ const teamsReducer = (state = [], action) => {
   }
 }
 
-const statsReducer = (state = [], action) => {
+const statsReducer = (state = {}, action) => {
   switch (action.type) {
     case 'SET_STATS':
       return action.payload;
