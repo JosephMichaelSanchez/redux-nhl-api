@@ -31,8 +31,8 @@ function TeamsList() {
 
     return (
         <>
-            <h3>TeamsList goes here:</h3>
-            <button onClick={setTeams}>Show NHL Teams</button>
+            
+            <button onClick={setTeams}>Click to Show NHL Team List</button>
             {/* loop through the teamList array if it has at least one object inside it */}
             {nhlTeams.map(team => {
                 return (

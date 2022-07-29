@@ -5,7 +5,7 @@ import TeamsList from './TeamsList';
 function App() {
   return (
     <div className="App">
-      <h3>NHL API</h3>
+      <h3>Redux NHL API</h3>
       <TeamsList />
     </div>
   );
