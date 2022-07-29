@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 
 
@@ -7,14 +7,13 @@ function TeamItem({ team }) {
 
     const dispatch = useDispatch();
     const [teamStats, setTeamStats] = useState({});
+    const gamesPlayed = useSelector(store => store.statsReducer.gamesPlayed)
+    
 
-    const setStats = () => {
-
-        dispatch({
-            type: 'SET_STATS',
-            payload: teamStats
-        })
-
+    const logState = () => {
+        
+            console.log(gamesPlayed);
+            
     }
 
 
@@ -36,7 +35,7 @@ function TeamItem({ team }) {
         
     }
     return (<>
-        <p>Team ID: {team.id} Team Name: {team.name} <button onClick={getStats}>Get Team Stats</button></p>
+        <p>Team ID: {team.id} Team Name: {team.name} <button onClick={getStats}>Get Team Stats</button><button onClick={logState}>Download CSV</button></p>
     </>
     )
 }
