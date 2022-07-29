@@ -18,6 +18,7 @@ function TeamsList() {
 
     }
 
+    // function to send the teamList to the reducer
     const setTeams = () => {
         dispatch({
             type: 'SET_TEAMS',
@@ -36,6 +37,7 @@ function TeamsList() {
             {/* loop through the teamList array if it has at least one object inside it */}
             {nhlTeams.map(team => {
                 return (
+                    // each team will map as a TeamItem component with the team.is as it's key
                     <TeamItem
                     key={team.id}
                     team={team}
