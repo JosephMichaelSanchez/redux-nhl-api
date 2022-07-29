@@ -23,7 +23,7 @@ function TeamItem({ team }) {
 
         try {
             const res = await axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${team.id}?expand=team.stats`);
-            console.log(res.data.teams[0].teamStats[0].splits[0].stat);
+            console.log(res.data.teams[0].teamStats[0]);
             
             dispatch ({
                 type: 'SET_STATS',
@@ -33,6 +33,12 @@ function TeamItem({ team }) {
         } catch (err) {
             console.log(err);
 
+        }
+        try {
+            const response = await axios.get(`https://statsapi.web.nhl.com/api/v1/teams/${team.id}?expand=team.schedule.next`)
+            console.log(response.data.teams[0].nextGameSchedule.dates[0].date)
+        } catch (err) {
+            console.log(err);
         }
         
     }
