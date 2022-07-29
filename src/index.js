@@ -28,10 +28,21 @@ const statsReducer = (state = {}, action) => {
         return state;
   }
 }
+
+const dateReducer = (state = '', action) => {
+  switch (action.type) {
+    case 'SET_DATE':
+      return action.payload;
+
+      default:
+        return state;
+  }
+}
 const store = createStore(
   combineReducers({
     teamsReducer: teamsReducer,
-    statsReducer: statsReducer
+    statsReducer: statsReducer,
+    dateReducer: dateReducer,
   }),
   applyMiddleware(logger)
 
